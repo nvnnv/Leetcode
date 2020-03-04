@@ -1,3 +1,13 @@
+/*
+f(n) = M(f(n-1), f(1)) n>1 M: all legal matches of f(n-1) and f(1) 
+the rule of () match: there are two directions, f(n-1)->f(1);making f(n-1) insert f(1) and f(1)->f(n-1); making f(1) insert f(n-1)
+for "f(n-1)->f(1)" 3 situations 
+  (),((,)),)(, meeting these 4 forms, f(1) inserts the middle of (),((,)),)(; 
+  f(1) is put in front of f(n-1);
+  f(1) is put in back of f(n-1);
+ for "f(1)->f(n-1)" only 1 possibility
+  f(n-1) is put the middle of f(1);
+*/
 // 12ms 10.5MB
 unsigned pare_num_mapp(string& str)
 {
