@@ -1,3 +1,25 @@
+/*
+  1 2 3 4
+  3 4 5 6
+  4 5 6 7
+  5 6 7 8
+  solution: seperate the matrix into several rims like this below
+  first rim:
+  1 2 3 4
+  3     6
+  4     7
+  5 6 7 8
+  second rim:
+  4 5
+  5 6
+  each rim is independent
+  For first rim is changed like this below
+  5 4 3 1
+  6     2
+  7     3
+  8 7 6 4
+  and the second situation is same
+*/
 void rotate(vector<vector<int>>& matrix) {
 	int n = matrix.size();
 	if (n <= 1)
