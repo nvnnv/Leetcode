@@ -1,8 +1,8 @@
 int maxProfit(vector<int>& prices) {
 	int n = prices.size();
 	if (n == 0 || n == 1) return 0;
-	/*
-		
+		/*
+		n-1 -> n  solution
 	*/
 	int ans = 0;
 	int min = prices[0];
