@@ -4,7 +4,7 @@ int pivotIndex(vector<int>& nums) {
 	int left = 0;
 	int right = 0;
 	for (int i = 1; i < n; ++i) right += nums[i];
-	if (left == right) return 1;
+	if (left == right) return 0;
 	for (int i = 1; i < n; ++i)
 	{
 		left += nums[i-1];
