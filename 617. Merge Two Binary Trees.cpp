@@ -32,5 +32,5 @@ TreeNode* mergeTrees(TreeNode* t1, TreeNode* t2) {
             s.pop();
         }
     }
-    return root;
+    return root;;
 }
