@@ -33,7 +33,7 @@ void ox(TreeNode* cur, TreeNode* aim, bool& f)
         }
         if (cur->right == nullptr && aim->right)
         {
-            f = false;
+            f = false
             return;
         }
     }
