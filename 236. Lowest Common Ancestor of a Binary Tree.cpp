@@ -34,3 +34,29 @@ TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
     }
     return nullptr;
 }
+
+void ooooxxxx(TreeNode* cur, int x1, int x2, bool& f, TreeNode** LCA)
+{
+    if (cur == nullptr) return;
+    if (cur->val == x1 || cur->val == x2)
+    {
+        f = true;
+    }
+
+    bool fx1 = false;
+    if (!(*LCA) && cur->left) ooooxxxx(cur->left, x1, x2, fx1, LCA);
+    bool fx2 = false;
+    if (!(*LCA) && cur->right) ooooxxxx(cur->right, x1, x2, fx2, LCA);
+    if ((f && fx2) || (f && fx1) || (fx1 && fx2))
+    {
+        if(*LCA == nullptr) *LCA = cur;
+    }
+    f = f | fx1 | fx2;
+}
+TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
+    bool f1 = false;
+    bool f2 = false;
+    TreeNode* LCA = nullptr;
+    ooooxxxx(root, p->val, q->val, f1, &LCA);
+    return LCA;
+}
