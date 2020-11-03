@@ -47,3 +47,47 @@ int findCircleNum(vector<vector<int>>& M) {
     }
     return s.size();
 }
+# brute force dfs
+void nimei(unordered_map<int, vector<int>>& gra, int i, vector<int>& v)
+{
+    if (v[i]) return;
+    v[i] = 1;
+    for (int j = 0; j < gra[i].size(); ++j)
+    {
+        nimei(gra, gra[i][j], v);
+    }
+    return;
+}
+int findCircleNum(vector<vector<int>>& M) {
+    unordered_map<int, vector<int>> gra;
+    for (int i = 0; i < M.size(); ++i)
+    {
+        for (int j = 0; j < M[i].size(); ++j)
+        {
+            if (M[i][j] == 1)
+            {
+                if (!gra.count(i))
+                {
+                    vector<int> v;
+                    gra[i] = v;
+                }
+                if (!gra.count(j))
+                {
+                    vector<int> v;
+                    gra[j] = v;
+                }
+                gra[i].push_back(j);
+                gra[j].push_back(i);
+            }
+        }
+    }
+    vector<int> vis(M.size(), 0);
+    int num = 0;
+    for (int i = 0; i < M.size(); ++i)
+    {
+        if (vis[i]) continue;
+        nimei(gra, i, vis);
+        ++num;
+    }
+    return num;
+}
