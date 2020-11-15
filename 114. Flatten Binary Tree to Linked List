@@ -1,0 +1,22 @@
+TreeNode* do_flatten(TreeNode* node)
+{
+    if (node == nullptr) return nullptr;
+    auto l1 = do_flatten(node->left);
+    auto l2 = do_flatten(node->right);
+    node->left = nullptr;
+    node->right = l1;
+    if (l1)
+    {
+        auto e = l1;
+        while (e->right) e = e->right;
+        e->right = l2;
+    }
+    else
+    {
+        node->right = l2;
+    }
+    return node;
+}
+void flatten(TreeNode* root) {
+    do_flatten(root);
+}
