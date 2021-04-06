@@ -61,3 +61,26 @@ TreeNode* lcaDeepestLeaves(TreeNode* root) {
     index(root, 1, ind, &x);
     return x;
 }
+
+# new way to solve it
+class Solution:
+    def lcaDeepestLeaves(self, root: TreeNode) -> TreeNode:
+        if root is None:
+            return None
+        
+        ansNode = []
+        deepest = [0]
+        def dfs(node, deep):
+            if node is None:
+                return deep
+            
+            left = dfs(node.left, deep+1)
+            right = dfs(node.right, deep+1)
+            
+            if left == right and left >= deepest[0]:
+                ansNode.append(node)
+                deepest[0] = left
+                
+            return max(left, right)
+        dfs(root, 0)
+        return ansNode[-1]
