@@ -1,0 +1,20 @@
+class Solution:
+    def subdomainVisits(self, cpdomains: List[str]) -> List[str]:
+        domains = {}
+        for s in cpdomains:
+            parts = s.split(" ")
+            parts[0] = int(parts[0])
+            subs = parts[1].split(".")
+            cur_sub = ""
+            for sub in subs[::-1]:
+                if cur_sub == "":
+                    cur_sub += sub
+                else:
+                    cur_sub = sub + "." + cur_sub
+                if cur_sub not in domains:
+                    domains[cur_sub] = 0
+                domains[cur_sub] += parts[0]
+        ans = []
+        for sub, times in domains.items():
+            ans.append(str(times) + " " + sub)
+        return ans
